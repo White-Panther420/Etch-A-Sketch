@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "page_container">
+        <div class = "title_and_input_container">
+            <h1 class = "title">Etch Thy Sketch</h1>
+            <p class = "input_prompt">Please enter canvas size in the format <span>HxW. </span>
+                Canvas limit is <span>100x100</span>
+            </p>
+            <input type="text" class="input_box" value="16x16">
+        </div>
+
+        <div class="paint_and_canvas_container">
+            <div class="brush_and_paint_container">
+                <div class="brush">
+                    <!--Insert paint brush image here-->
+                </div>
+                <div class="paint_and_eraser">
+                    <div class="paint_container">
+                        <div class="black_paint"></div>
+                        <p class="paint_description">Toggle Black Paint</p>
+                    </div>
+                    <div class="paint_container">
+                        <div class="shadding_paint"></div> <!--Increases the intensity of the color with each mouse pass-->
+                        <p class="paint_description">Toggle Shadding Paint</p>
+                    </div> 
+                    <div class="paint_container">
+                        <div class="custom_paint"></div>
+                        <p class="paint_description">Toggle Custom Paint</p>                        
+                    </div>
+                    <div class="paint_container">
+                        <div class="rainbow_paint"></div>
+                        <p class="paint_description">Toggle Rainbow Paint</p>
+                    </div>
+                    <div class="eraser_container">
+                        <div class="eraser"></div>
+                        <p class="eraser_description">Toggle Eraser</p>
+                    </div>
+                    <div class="clear_all_container">
+                        <div class="clear_all"></div>
+                        <p class="clear_all_description">Clear Canvas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canvas_container">
+                <div class="canvas"></div>
+                <div class="canvas_stand_img">
+                    <!--Insert canvas stand image-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
