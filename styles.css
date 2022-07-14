@@ -9,8 +9,106 @@ body
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background-image: url("./Imaages/background.jpeg");    
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+    background-color: #F0C48D;
+    justify-content: center;
+    align-items: center;
 }
+
+.title_container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin-top: -115px;
+}
+
+.title
+{
+    font-size: 48px;
+    font-weight: 1000;
+    color: #df7841;
+}
+
+.input_prompt
+{
+    font-size: 16px;
+    font-weight: 700;
+    color: #485dff;
+    text-align: center;
+}
+
+.content_container
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: red;
+}
+
+.brush_and_paint_container
+{
+    display: flex;
+    background-color: green;
+}
+
+.paint_and_eraser
+{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellow;
+    height: 450px;
+    width: 350px;
+    gap: 32px;
+}
+
+.paint_container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+}
+
+.black_paint,
+.shadding_paint,
+.custom_paint,
+.rainbow_paint
+{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.paint_description
+{
+    text-align: center;
+}
+
+.canvas
+{
+    height: 1000px;
+    width: 1000px;
+    background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+span
+{
+    font-weight: 1000;
+}
+
