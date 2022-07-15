@@ -40,13 +40,20 @@ body
     justify-content: space-around;
 }
 
+.user_tools
+{
+    display: flex;
+    flex-direction: column;
+}
+
 .brush_and_paint_container
 {
     display: flex;
     align-self: flex-start;
     justify-content: flex-end;
+    margin-top: -30px;
     margin-right: 0;
-    width: 600px;
+    width: 500px;
 }
 
 .paint_brush
@@ -62,7 +69,7 @@ body
     height: 650px;
     width: 350px;
     margin-right: 0;
-    margin-left: -50px;
+    margin-left: 32px;
 }
 
 .paint_container,
@@ -93,6 +100,21 @@ body
     background-color: black;
 }
 
+.shadding_paint
+{
+    background: linear-gradient(black, rgb(148, 147, 147));
+}
+
+.custom_paint
+{
+    background-color: rgb(119, 35, 35);
+}
+
+.rainbow_paint
+{
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+}
+
 .paint_description,
 .eraser_description,
 .clear_all_description
@@ -109,7 +131,7 @@ body
     align-items: center;
     justify-content: center;
     width: 500px;
-    margin-left: -60px;
+    margin-left: 28px;
     margin-top: -20px;
 }
 .canvas
@@ -165,11 +187,52 @@ span
     font-family: cursive;
 }
 
-.input_box
+.canvas_size_slider_container
 {
-    font-size: 24px;
-    width: 200px;
-    height: 50px;
-    margin-top: -20px;
-    font-family: cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -40px;
 }
+
+.slider_value
+{
+    text-align: center;
+    font-family: cursive;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* The slider itself */
+.slider 
+{
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 400px; /* Full-width */
+    height: 20px; /* Specified height */
+    background: #df7841; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+
+  .slider::-webkit-slider-thumb 
+  {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 50px; /* Set a specific slider handle width */
+    height: 50px; /* Slider handle height */
+    border-radius: 50%;
+    background: #b48972; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb 
+  {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #b48972; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }

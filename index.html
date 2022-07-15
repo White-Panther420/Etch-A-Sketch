@@ -12,38 +12,37 @@
         <h1 class = "title">Etch Thy Sketch</h1>
 
         <div class="content_container">
-            <div class="brush_and_paint_container">
-                <div class="brush">
-                    <img class="paint_brush" src="./Images/paint_brush.png" alt="wooden paint brush">
+                <div class="brush_and_paint_container">
+                    <div class="brush">
+                        <img class="paint_brush" src="./Images/paint_brush.png" alt="wooden paint brush">
+                    </div>
+                    <div class="paint_and_eraser">
+                        <div class="paint_container">
+                            <div class="black_paint"></div>
+                            <p class="paint_description">Toggle Black Paint</p>
+                        </div>
+                        <div class="paint_container">
+                            <div class="shadding_paint"></div> <!--Increases the intensity of the color with each mouse pass-->
+                            <p class="paint_description">Toggle Shadding Paint</p>
+                        </div> 
+                        <div class="paint_container">
+                            <div class="custom_paint"></div>
+                            <p class="paint_description">Toggle Custom Paint</p>                        
+                        </div>
+                        <div class="paint_container">
+                            <div class="rainbow_paint"></div>
+                            <p class="paint_description">Toggle Rainbow Paint</p>
+                        </div>
+                        <div class="eraser_container">
+                            <div class="eraser"></div>
+                            <p class="eraser_description">Toggle Eraser</p>
+                        </div>
+                        <div class="clear_all_container">
+                            <div class="clear_all"></div>
+                            <p class="clear_all_description">Clear Canvas</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="paint_and_eraser">
-                    <div class="paint_container">
-                        <div class="black_paint"></div>
-                        <p class="paint_description">Toggle Black Paint</p>
-                    </div>
-                    <div class="paint_container">
-                        <div class="shadding_paint"></div> <!--Increases the intensity of the color with each mouse pass-->
-                        <p class="paint_description">Toggle Shadding Paint</p>
-                    </div> 
-                    <div class="paint_container">
-                        <div class="custom_paint"></div>
-                        <p class="paint_description">Toggle Custom Paint</p>                        
-                    </div>
-                    <div class="paint_container">
-                        <div class="rainbow_paint"></div>
-                        <p class="paint_description">Toggle Rainbow Paint</p>
-                    </div>
-                    <div class="eraser_container">
-                        <div class="eraser"></div>
-                        <p class="eraser_description">Toggle Eraser</p>
-                    </div>
-                    <div class="clear_all_container">
-                        <div class="clear_all"></div>
-                        <p class="clear_all_description">Clear Canvas</p>
-                    </div>
-                </div>
-            </div>
-
             <div class="canvas_container">
                 <div class="canvas"></div>
                 <div class="bottom_canvas_stand_img">
@@ -53,10 +52,13 @@
 
             <div class="input_and_instructions_container">
                 <h2><u>INSTRUCTIONS</u></h2>
-                <p class = "instruction"><span>1. </span> Please enter canvas size in the format <span class="size_limit">HxW. </span>
-                    Canvas limit is <span class="size_limit">100x100</span>
+                <p class = "instruction"><span>1. </span> Select your canvas size.
+                    Canvas limit is <span class="size_limit"> 1x1 to 100x100</span>
                 </p>
-                <input type="text" class="input_box" value="16x16">
+                <div class = "canvas_size_slider_container">
+                    <p class = "slider_value">16x16</p>
+                    <input class="slider" type="range" min="1x1" max="100x100" value="16x16">
+                </div>
                 <p class="instruction"><span>2. </span>Click on the paint brush then click on a paint to start sketching</p>
                 <p class="instruction"><span>3. </span>After you're done sketching, click on the eraser to delete 
                 portions of your sketch or click on the trash can to clear the entire canvas
