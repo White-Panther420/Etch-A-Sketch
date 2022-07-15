@@ -136,6 +136,8 @@ body
 }
 .canvas
 {
+    display: flex;
+    flex-wrap: wrap;
     height: 500px;
     width: 500px;
     margin-left: 10px;
