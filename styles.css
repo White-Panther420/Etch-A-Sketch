@@ -138,11 +138,17 @@ body
 {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;  /*Removes vertical gaps from flex wrap*/
     height: 500px;
     width: 500px;
     margin-left: 10px;
     margin-top: 0px;
     background-color: rgb(235, 197, 197);
+}
+
+.canvas_square
+{
+    background-color: black;
 }
 
 .bottom_canvas_stand
