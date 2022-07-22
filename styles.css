@@ -160,6 +160,11 @@ input[type=color] /*Hide small color input box*/
     background-color: rgb(235, 197, 197);
 }
 
+.canvas_square
+{
+    background-color: black;
+}
+
 .bottom_canvas_stand
 {
     height: 300px;

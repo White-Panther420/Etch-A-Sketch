@@ -104,26 +104,3 @@ function paintSquare(square, square_size, paintType = "black")
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${rainbow_colors[Math.floor(Math.random() *6)]};`);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
