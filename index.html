@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src = "etch-a-sketch.js" defer></script>
 </head>
+
 <body>
     <div class = "page_container">
         <h1 class = "title">Etch Thy Sketch</h1>
@@ -27,7 +28,10 @@
                             <p class="paint_description">Toggle Shadding Paint</p>
                         </div> 
                         <div class="paint_container">
-                            <div class="custom_paint"></div>
+                            <div class="custom_paint">
+                                <span class="color_picker_span"></span>
+                                <input type="color" class = "color_picker" value="red">
+                            </div>
                             <p class="paint_description">Toggle Custom Paint</p>                        
                         </div>
                         <div class="paint_container">
@@ -54,11 +58,10 @@
             <div class="input_and_instructions_container">
                 <h2><u>INSTRUCTIONS</u></h2>
                 <p class = "instruction"><span>1. </span> Select your canvas size.
-                    Canvas limit is <span class="size_limit"> 1x1 to 100x100</span>
+                    Canvas limit is <span class="size_limit"> 1 to 100</span>
                 </p>
-                <div class = "canvas_size_slider_container">
-                    <p class = "slider_value">16x16</p>
-                    <input class="slider" type="range" min="1x1" max="100x100" value="16x16">
+                <div class = "prompt_box">
+                    <button class="prompt_btn">Enter canvas size</button>
                 </div>
                 <p class="instruction"><span>2. </span>Click on the paint brush then click on a paint to start sketching</p>
                 <p class="instruction"><span>3. </span>After you're done sketching, click on the eraser to delete 
