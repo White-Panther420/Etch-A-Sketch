@@ -64,10 +64,9 @@ function createCanvas(canvas_size)
     {
         let square = document.createElement("div");
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0;`);
-        canvas.addEventListener("mousedown", function(){
-            square.addEventListener("mouseover", function(){
-                paintSquare(square, square_size, paint);
-            });
+        square.addEventListener("mouseover", function(){
+            paintSquare(square, square_size, paint);
+            percentage_darken+=5;
         });
         canvas.appendChild(square);
     }
@@ -75,32 +74,40 @@ function createCanvas(canvas_size)
 
 function paintSquare(square, square_size, paintType = "black")
 {
-    if(paint === "black")
+    if(paintType === "shadding")
     {
-        square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${paintType};`);
+        //We get the curremt square's current bg color (an rgb(x, x, x) value)
+        //Then we grab the three rgb values and store them in an array
+        let rgb = square.style.backgroundColor;
+        rgb = rgb.substring(4, rgb.length-1)
+         .replace(/ /g, '')
+         .split(',');
+        //Add 10 to each rgb value, thus increasing the brightness of the color
+        square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: rgb(${+rgb[0] + 10}, ${+rgb[1] + 10}, ${+rgb[2]+10})`);
     }
-    else if(paint === "shadding")
-    {
-        percentage_darken+=25.5
-        square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: rgb(${255/percentage_darken}, ${255/percentage_darken}, ${255/percentage_darken})`);
-    }
-    else if (paint === "custom")
+    else if (paintType === "custom")
     {
         const color_picker = document.querySelector(".color_picker");
-        const color_picker_span = document.querySelector(".color_picker_span");
-        
-        color_picker.click();  //Selects the color input button since it's "invisible"
-        //This will change the span that represents the custom paint whenever a user picks a color
-        color_picker.addEventListener("change", function(){
-            paint = `${color_picker.value}`;
-            color_picker_span.setAttribute("style", `background-color: ${paint};`);
+        const color_picker_div = document.querySelector(".custom_paint");
+        color_picker_div.addEventListener("click", function(){
+            color_picker.click();  //Selects the color input button since it's "invisible"
+            //This will change the span that represents the custom paint whenever a user picks a color
+            color_picker.addEventListener("change", function(){
+                paintType = `${color_picker.value}`;
+                console.log(`This is the paint: ${paintType}`);
+                const color_picker_span = document.querySelector(".color_picker_span");
+                color_picker_span.setAttribute("style", `background-color: ${paintType};`);
+            });
         });
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${paintType};`);
     }
     else if(paint === "rainbow")
     {
         const rainbow_colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
-        console.log(`Color = ${rainbow_colors[Math.random(6)]}`);
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${rainbow_colors[Math.floor(Math.random() *6)]};`);
+    }
+    else
+    {
+        square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: rgb(0, 0, 0)`);
     }
 }
