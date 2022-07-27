@@ -90,9 +90,7 @@ body
 .black_paint,
 .shadding_paint,
 .custom_paint,
-.rainbow_paint,
-.eraser,
-.clear_all
+.rainbow_paint
 {
     height: 75px;
     width: 75px;
@@ -127,6 +125,24 @@ input[type=color] /*Hide small color input box*/
 .rainbow_paint
 {
     background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+}
+
+.eraser,
+.clear_all
+{
+    display: flex;
+    justify-content: center;
+    height: 75px;
+    width: 75px;
+    margin-top: -20px;
+    border-radius: 50%;
+}
+
+.eraser_img,
+.trashcan
+{
+    width: 100px;
+    height: 100px;
 }
 
 .paint_description,

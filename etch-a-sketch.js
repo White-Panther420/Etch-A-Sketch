@@ -1,11 +1,18 @@
 const page = document.querySelector(".page_container");
 const paint_brush = document.querySelector(".paint_brush");
+const eraser = document.querySelector(".eraser");
+const clear_all = document.querySelector(".clear_all");
 const canvas = document.querySelector(".canvas");
 const color_picker = document.querySelector(".color_picker");
 const color_picker_span = document.querySelector(".color_picker_span");
 
 let paint;
 let percentage_darken = 0;  //For shading paint
+
+//Turn the cursor into a paint brush after clicking on the paint brush
+paint_brush.addEventListener("click", function(){
+    page.setAttribute("style", "cursor: url('./Images/cursor_brush.png'), auto;");
+});
 
 const black_paint = document.querySelector(".black_paint");
 black_paint.addEventListener('click', function()
@@ -37,6 +44,16 @@ rainbow_paint.addEventListener('click', function()
     paint = "rainbow";
 });
 
+//Turn the cursor into an eraser after clicking on the paint brush
+eraser.addEventListener("click", function(){
+    page.setAttribute("style", "cursor: url('./Images/small_eraser.png'), auto;");
+    paint = "eraser";
+});
+
+clear_all.addEventListener("click", function(){
+    paint = "clear_all";
+});
+
 const canvas_size_input = document.querySelector(".prompt_btn");
 let canvas_size;
 canvas_size_input.addEventListener("click", function(){
@@ -58,12 +75,6 @@ canvas_size_input.addEventListener("click", function(){
     }while (canvas_size>100 || canvas_size<1)
 })
 
-//Turn the cursor into a paint brush after clicking on the paint brush
-paint_brush.addEventListener("click", function(){
-    page.setAttribute("style", "cursor: url('./Images/cursor_brush.png'), auto;");
-});
-
-
 function createCanvas(canvas_size)
 {
     let square_size = 500/canvas_size;
@@ -74,6 +85,7 @@ function createCanvas(canvas_size)
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0;`);
         square.addEventListener("mouseover", function(){
             paintSquare(square, square_size, paint);
+            //Add a class to eahc square so we can use querySelectorall
         });
         canvas.appendChild(square);
     }
@@ -97,10 +109,19 @@ function paintSquare(square, square_size, paintType = "black")
     {
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${color_picker_span.style.backgroundColor};`);
     }
-    else if(paint === "rainbow")
+    else if(paintType === "rainbow")
     {
         const rainbow_colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${rainbow_colors[Math.floor(Math.random() *6)]};`);
+    }
+    else if(paintType === "eraser") 
+    {
+        //Reset color to the same one as the canvas to make it seem like the paint is being erased
+        square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: rgb(235, 197, 197)`);
+    }
+    else if(paintType === "clear_all")
+    {
+        square.innerHTML = " ";
     }
     else  //Default black paint
     {
