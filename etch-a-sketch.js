@@ -1,6 +1,8 @@
 const page = document.querySelector(".page_container");
 const paint_brush = document.querySelector(".paint_brush");
 const canvas = document.querySelector(".canvas");
+const color_picker = document.querySelector(".color_picker");
+const color_picker_span = document.querySelector(".color_picker_span");
 
 let paint;
 let percentage_darken = 0;  //For shading paint
@@ -20,7 +22,13 @@ shadding_paint.addEventListener('click', function()
 const custom_paint = document.querySelector(".custom_paint");
 custom_paint.addEventListener('click', function()
 {
-    paint = "custom";
+    color_picker.click();  //Selects the color input button since it's "invisible"
+    //This will change the span that represents the custom paint whenever a user picks a color
+    color_picker.addEventListener("change", function(){
+        paint = `${color_picker.value}`;
+        color_picker_span.setAttribute("style", `background-color: ${paint}`);
+        paint = "custom";
+    });
 });
 
 const rainbow_paint = document.querySelector(".rainbow_paint");
@@ -66,7 +74,6 @@ function createCanvas(canvas_size)
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0;`);
         square.addEventListener("mouseover", function(){
             paintSquare(square, square_size, paint);
-            percentage_darken+=5;
         });
         canvas.appendChild(square);
     }
@@ -76,6 +83,7 @@ function paintSquare(square, square_size, paintType = "black")
 {
     if(paintType === "shadding")
     {
+        percentage_darken+=5;
         //We get the curremt square's current bg color (an rgb(x, x, x) value)
         //Then we grab the three rgb values and store them in an array
         let rgb = square.style.backgroundColor;
@@ -87,26 +95,14 @@ function paintSquare(square, square_size, paintType = "black")
     }
     else if (paintType === "custom")
     {
-        const color_picker = document.querySelector(".color_picker");
-        const color_picker_div = document.querySelector(".custom_paint");
-        color_picker_div.addEventListener("click", function(){
-            color_picker.click();  //Selects the color input button since it's "invisible"
-            //This will change the span that represents the custom paint whenever a user picks a color
-            color_picker.addEventListener("change", function(){
-                paintType = `${color_picker.value}`;
-                console.log(`This is the paint: ${paintType}`);
-                const color_picker_span = document.querySelector(".color_picker_span");
-                color_picker_span.setAttribute("style", `background-color: ${paintType};`);
-            });
-        });
-        square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${paintType};`);
+        square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${color_picker_span.style.backgroundColor};`);
     }
     else if(paint === "rainbow")
     {
         const rainbow_colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: ${rainbow_colors[Math.floor(Math.random() *6)]};`);
     }
-    else
+    else  //Default black paint
     {
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: rgb(0, 0, 0)`);
     }
