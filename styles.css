@@ -178,7 +178,7 @@ input[type=color] /*Hide small color input box*/
 
 .canvas_square
 {
-    background-color: black;
+    background-color: rgb(235, 197, 197);;
 }
 
 .bottom_canvas_stand
@@ -205,7 +205,7 @@ h2
 
 .instruction
 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     color: #b48972;
     font-family: cursive;

@@ -50,10 +50,6 @@ eraser.addEventListener("click", function(){
     paint = "eraser";
 });
 
-clear_all.addEventListener("click", function(){
-    paint = "clear_all";
-});
-
 const canvas_size_input = document.querySelector(".prompt_btn");
 let canvas_size;
 canvas_size_input.addEventListener("click", function(){
@@ -83,12 +79,19 @@ function createCanvas(canvas_size)
     {
         let square = document.createElement("div");
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0;`);
-        square.addEventListener("mouseover", function(){
-            paintSquare(square, square_size, paint);
-            //Add a class to eahc square so we can use querySelectorall
-        });
+        //When user clicks on canvas, they can begin sketching by then hovering the mouse on the canvas
+        canvas.addEventListener("mousedown", function(){
+            square.addEventListener("mouseover", function(){
+                square.classList.add("canvas_square");  //Allows us to later on delete squares
+                paintSquare(square, square_size, paint);  
+            });
+        })
         canvas.appendChild(square);
     }
+    clear_all.addEventListener("click", function(){
+        let squareNodeList = document.querySelectorAll(".canvas_square");
+        deleteCanvas(squareNodeList, square_size);
+    });
 }
 
 function paintSquare(square, square_size, paintType = "black")
@@ -119,12 +122,16 @@ function paintSquare(square, square_size, paintType = "black")
         //Reset color to the same one as the canvas to make it seem like the paint is being erased
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: rgb(235, 197, 197)`);
     }
-    else if(paintType === "clear_all")
-    {
-        square.innerHTML = " ";
-    }
     else  //Default black paint
     {
         square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: rgb(0, 0, 0)`);
     }
+}
+
+function deleteCanvas(squareNodeList, square_size)
+{
+    //Make each square have the same background as the canvas to make it seem as if they were deleted
+    squareNodeList.forEach(square => {
+        square.setAttribute("style", `height: ${square_size}px; width: ${square_size}px; margin: 0; background-color: rgb(235, 197, 197)`);
+    });
 }
